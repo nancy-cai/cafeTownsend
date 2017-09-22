@@ -1,36 +1,26 @@
 package stepDefinition;
 
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import helper.Helper;
 import pageObject.LoginPage;
 import pageObject.LandingPage;
 
+import org.junit.After;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class LoginStepDefinition {
+
+	Helper helper = new Helper();
+	LoginPage lp = new LoginPage(helper.getDriver());
+	LandingPage landP = new LandingPage(helper.getDriver());
 	
-	public static WebDriver driver= new ChromeDriver();
-	LoginPage lp = new LoginPage(driver);
-	
-	
-	@Before
-	public void navigateToPage(){		
-		driver.manage().window().maximize();
-		driver.get("http://cafetownsend-angular-rails.herokuapp.com/login");
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	}
-	
+
 	
 	@Given("^user is on Login page$")
 	public void user_is_on_Login_page() throws Throwable {
+		helper.browserNavigate();
 	    lp.assertTitle();
 	}
 
@@ -54,19 +44,21 @@ public class LoginStepDefinition {
 	    lp.clickLogin();
 	}
 
-	@Then("^user should be logged in$")
-	public void user_should_be_logged_in() throws Throwable {
-	    lp.checkGreetingMsg();
+	@Then("^user should see \"(.*?)\" as the username in greeting message$")
+	public void user_should_see_as_username_in_greeting_message(String name) throws Throwable {
+	    landP.checkGreetingMsg(name);
 	}
 	
-	@Then("^user should see popup error message$")
-	public void user_should_see_popup_error_message() throws Throwable {
+	@Then("^user should be unable to proceed with login$")
+	public void user_should_be_unable_to_proceed_with_login() throws Throwable {
 		lp.checkPopupError();
 	}
 	
 	@Then("^user should see \"(.*?)\"$")
-	public void user_should_see(String arg1) throws Throwable {
-		lp.checkErrorMsg(arg1);
+	public void user_should_see(String error) throws Throwable {
+		lp.checkErrorMsg(error);
 	}
+	
+
 
 }

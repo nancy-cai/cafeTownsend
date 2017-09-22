@@ -1,16 +1,15 @@
-
-Feature: Login Features
+Feature: Login
 @LoginSuccess
 	Scenario Outline: Login with valid credentials
 		Given user is on Login page
 		And Login form displayed
-		When user enters username "<username>"
+		When user enters username "<userName>"
 		And user enters password"<password>"
 		And user clicks the Login button
-		Then user should be logged in
+		Then user should see "<userName>" as the username in greeting message
 		
 		Examples:
-		|username     |password   |
+		|userName     |password   |
 		|Luke         |Skywalker  |
 		
 	
@@ -18,29 +17,29 @@ Feature: Login Features
 	Scenario Outline: Login with invalid credentials
 		Given user is on Login page
 		And Login form displayed
-		When user enters username "<username>"
+		When user enters username "<userName>"
 		And user enters password"<password>"
 		And user clicks the Login button
-		Then user should see "<error message>"
+		Then user should see "<errorMessage>"
 		
 		Examples:
-		|username     |password   |error message 						  |
-		|Luke         |12         |Invalid username or password!    	  |
-		|Lu           |Skywalker  |Invalid username or password!   		  |
-		|Lu           |12         |Invalid username or password!          |
+		|userName     |password   |errorMessage									  |
+		|Luke         |12         |Invalid username or password!	|
+		|Lu           |Skywalker  |Invalid username or password!	|
+		|Lu           |12         |Invalid username or password!	|
 		
 		
 @LoginFailureEmpty		
 	Scenario Outline: Failed login with empty credential
 		Given user is on Login page
 		And Login form displayed
-		When user enters username "<username>"
+		When user enters username "<userName>"
 		And user enters password"<password>"
 		And user clicks the Login button
-		Then user should see popup error message
+		Then user should be unable to proceed with login
 		
 		Examples:
-		|username     |password   |
+		|userName     |password   |
 		|Luke         |           |
 		|             |Skywalker  |
 		|             |           |

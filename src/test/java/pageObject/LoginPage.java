@@ -11,7 +11,6 @@ import helper.Helper;
 public class LoginPage {
 	
 	public static WebDriver driver;
-	public String name;
 	
 
 	public LoginPage(WebDriver driver) {
@@ -29,7 +28,6 @@ public class LoginPage {
 	}
 	
 	public void enterUsername(String name) throws Throwable {
-		this.name = name;
 	    username.clear();
 	    username.sendKeys(name);
 	    
@@ -44,13 +42,6 @@ public class LoginPage {
 	    loginButton.click();
 	}
 	
-	public void checkGreetingMsg() throws Throwable {
-	    LandingPage landP = new LandingPage(driver);
-	    String greetMsg = landP.greeting.getText();
-	    assertEquals("Hello"+ " " + name, greetMsg);
-	    Thread.sleep(3000);
-	}
-	
 	public void checkPopupError(){
 		String popError = loginButton.getAttribute("ng-disabled");
 		assertEquals("true",popError);
@@ -58,10 +49,11 @@ public class LoginPage {
 	
 	public void checkErrorMsg(String expectMsg) throws Exception{
 		Helper wait = new Helper();
-		wait.waitLoop(driver, errorMessage);
+		wait.waitLoop(errorMessage);
 		String errorMsg = errorMessage.getText();
 		assertEquals(expectMsg, errorMsg);
 	}
+	
 	
 	@FindBy(id="login-form")
 	WebElement loginForm;

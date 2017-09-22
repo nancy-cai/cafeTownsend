@@ -17,7 +17,13 @@ Prerequisite: Please make sure you have installed the following:
 - maven 3
 - chromedriver
 
+cli:
 $ mvn test
+
+Eclipse:
+Import project as Maven project
+Run the TestRunner class as Junit;
+Or run the pom.xml file as Maven Test;
 
 
 ### Where is the test report

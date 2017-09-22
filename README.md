@@ -17,9 +17,9 @@ Prerequisite: Please make sure you have installed the following:
 - maven 3
 - chromedriver
 
+$ mvn test
 
 
-$ mvn clean verify
-Where is the test report
+### Where is the test report
 
 target\cucumber-html-report\index.html

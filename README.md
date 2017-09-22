@@ -21,8 +21,8 @@ cli:
 $ mvn test
 
 Eclipse:
-Import project as Maven project
-Run the TestRunner class as Junit;
+Import project as Maven project,
+run the TestRunner class as Junit;
 Or run the pom.xml file as Maven Test;
 
 

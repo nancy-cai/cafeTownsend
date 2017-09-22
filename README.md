@@ -5,8 +5,10 @@ Author: Nancy Cai
 ### Framework and design model used
 
 - java maven
+- Selenium
 - BDD Cucumber
 - page object
+- java Junit
 
 ---------------------------------------------------
 ### How to run the test

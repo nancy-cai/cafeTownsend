@@ -13,7 +13,7 @@ Author: Nancy Cai
 
 Prerequisite: Please make sure you have installed the following:
 
-- java 1.7
+- java 1.8
 - maven 3
 - chromedriver
 

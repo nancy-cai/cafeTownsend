@@ -90,28 +90,13 @@ public class CreateStepDefinition {
 	public void user_should_be_taken_back_to_the_landing_page() throws Throwable {
 	    landP.employeeListDisplay();
 	}
+
 	
-	@After({"@update-happy-case","@cancel-delete-employee"})
-	public void deleteCreatedEmployee(String lastName){
-		try {
-			landP.selectLastNameFromList(lastName);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		landP.clickDeleteButton();
-		edp.acceptDeleteAlert();
-	}
-	
-	@After({"@create-happy-case","@update-fail-case","@cancel-update-employee"})
-	public void deleteCreateEmployeeOnUpdatePage(){
+	@After("@create-happy-case,@update-fail-case,@cancel-update-employee")
+	public void waitBtwTest() throws InterruptedException{
 		edp.clickDeleteButton();
 		edp.acceptDeleteAlert();
-	}
-	
-	@After
-	public void waitBtwTest() throws InterruptedException{
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 	}
 	
 

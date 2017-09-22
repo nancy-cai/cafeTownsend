@@ -93,9 +93,14 @@ public class CreateStepDefinition {
 
 	
 	@After("@create-happy-case,@update-fail-case,@cancel-update-employee")
-	public void waitBtwTest() throws InterruptedException{
+	public void deleteCreatedEmp() throws InterruptedException{
 		edp.clickDeleteButton();
 		edp.acceptDeleteAlert();
+		Thread.sleep(3000);
+	}
+	
+	@After
+	public void waitBtwTest() throws InterruptedException{
 		Thread.sleep(3000);
 	}
 	

@@ -13,7 +13,7 @@ import cucumber.api.junit.Cucumber;
 		plugin = { "html:target/cucumber-html-report",
 				        "json:target/cucumber.json", "pretty:target/cucumber-pretty.txt",
 				        "usage:target/cucumber-usage.json", "junit:target/cucumber-results.xml" },
-		features = "src/test/resources/Feature/UpdateEmployee.feature",
+		features = "src/test/resources/Feature",
 			
 		glue={"stepDefinition"}
 		
